@@ -13,11 +13,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(SAMPLES_ROOT ${CMAKE_CURRENT_LIST_DIR})
 
 #
-#
+# Add CMake module
 #
 list(APPEND CMAKE_MODULE_PATH	${SAMPLES_ROOT}/../cmake)
 
 #
+# List of samples
 #
-#
-find_package(CSPDK REQUIRED)
+add_subdirectory(simple)
