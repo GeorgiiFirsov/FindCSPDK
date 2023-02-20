@@ -5,7 +5,27 @@
 # FindCSPDK
 # ---------
 #
-# Simple CMake module, that discovers a Cryptographic Service Provider Development Kit
+# Simple CMake module, that discovers a Cryptographic Service Provider 
+# Development Kit. Defines variables with library and include
+# directories and libraries.
+#
+# Supports three components to link with:
+# - bcrypt_provider
+# - ncrypt_provider
+# - cng_provider
+#
+# If component is not specified, then it will not be included into
+# CSPDK_LIBRARIES variable. If no components specified, then all
+# the components are included.
+#
+# Output variables:
+# - CSPDK_FOUND - if false, then CSP Development Kit is absent
+# - CSPDK_ROOT - path to the root folder of CSP Development Kit
+# - CSPDK_INCLUDE_DIRS - CSP Development Kit include directories
+# - CSPDK_LIBRARY_DIRS_X86 - CSP Development Kit X86 library directories
+# - CSPDK_LIBRARY_DIRS_X64 - CSP Development Kit X86-64 library directories
+# - CSPDK_LIBRARY_DIRS - CSP Development Kit library directories for current platform
+# - CSPDK_LIBRARIES - CSP Development Kit libraries to link with (depends on COMPONENTS)
 #
 
 #
