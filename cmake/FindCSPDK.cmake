@@ -29,12 +29,27 @@
 #
 
 #
-# Firstly try to find CSP Development Kit root
+# Firstly try to find CSP Development Kit root and 
+# handle standard find_package arguments
 #
 
 file(GLOB CSPDK_ROOT
 	"C:/Program Files*/Windows Kits/*/Cryptographic Provider Development Kit"
 )
+
+include(FindPackageHandleStandardArgs)
+find_package_handle_standard_args(CSPDK REQUIRED_VARS CSPDK_ROOT)
+
+if (NOT CSPDK_ROOT)
+
+	#
+	# Not found :(
+	# Cannot do anything more, so here I return
+	#
+
+	return()
+
+endif (NOT CSPDK_ROOT)
 
 #
 # Include directory
@@ -88,9 +103,9 @@ unset(CSPDK_INTERNAL_ALL_COMPONENTS)
 # Now just print variables for debugging purposes
 #
 
-message("CSPDK_ROOT: ${CSPDK_ROOT}")
-message("CSPDK_INCLUDE_DIRS: ${CSPDK_INCLUDE_DIRS}")
-message("CSPDK_LIBRARY_DIRS_X86: ${CSPDK_LIBRARY_DIRS_X86}")
-message("CSPDK_LIBRARY_DIRS_X64: ${CSPDK_LIBRARY_DIRS_X64}")
-message("CSPDK_LIBRARY_DIRS: ${CSPDK_LIBRARY_DIRS}")
-message("CSPDK_LIBRARIES: ${CSPDK_LIBRARIES}")
+message(STATUS "CSPDK_ROOT: ${CSPDK_ROOT}")
+message(STATUS "CSPDK_INCLUDE_DIRS: ${CSPDK_INCLUDE_DIRS}")
+message(STATUS "CSPDK_LIBRARY_DIRS_X86: ${CSPDK_LIBRARY_DIRS_X86}")
+message(STATUS "CSPDK_LIBRARY_DIRS_X64: ${CSPDK_LIBRARY_DIRS_X64}")
+message(STATUS "CSPDK_LIBRARY_DIRS: ${CSPDK_LIBRARY_DIRS}")
+message(STATUS "CSPDK_LIBRARIES: ${CSPDK_LIBRARIES}")
